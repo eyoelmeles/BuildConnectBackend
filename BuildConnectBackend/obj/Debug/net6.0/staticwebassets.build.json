@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2sJVn+zAypJBtmADCMg93yMGtzlQlqvEORJeLN6V090=",
+  "Source": "BuildConnectBackend",
+  "BasePath": "_content/BuildConnectBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
