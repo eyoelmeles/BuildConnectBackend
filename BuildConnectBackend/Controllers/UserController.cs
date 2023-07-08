@@ -21,24 +21,24 @@ namespace RecipesApi.Controllers
             List<User> users = await _context.Users.ToListAsync();
             return Ok(users.Select(user => new UserDTO()
             {
-                Id = user.id,
-                UserName = user.user_name,
-                CreatedAt = user.created_at,
-                UpdatedAt = user.update_at,
+                Id = user.Id,
+                UserName = user.UserName,
+                PhoneNumber = user.PhoneNumber,
+                ImageUrl = user.ImageURL,
             }));
         }
         [HttpPost]
         public async Task<ActionResult<UserDTO>> CreateUser(User user)
         {
-            user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return Ok(new UserDTO()
             {
-                Id = user.id,
-                UserName = user.user_name,
-                CreatedAt = user.created_at,
-                UpdatedAt = user.update_at,
+                Id = user.Id,
+                UserName = user.UserName,
+                PhoneNumber = user.PhoneNumber,
+                ImageUrl = user.ImageURL,
             });
         }
     }

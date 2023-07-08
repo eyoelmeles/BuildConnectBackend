@@ -24,289 +24,301 @@ namespace BuildConnectBackend.Migrations
 
             modelBuilder.Entity("BuildConnectBackend.Model.DailyReport", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("site_id")
+                    b.Property<Guid>("SiteId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("id");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
 
-                    b.HasIndex("site_id");
+                    b.HasKey("Id");
+
+                    b.HasIndex("SiteId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("DailyReports");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.MaterialReport", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("daily_report_id")
+                    b.Property<Guid>("DailyReportId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("delivered")
+                    b.Property<string>("Delivered")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("location")
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("remark")
+                    b.Property<string>("Remark")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("to_date")
+                    b.Property<DateTime>("ToDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("type_of_material")
+                    b.Property<string>("TypeOfMaterial")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("unit")
+                    b.Property<string>("Unit")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("daily_report_id");
+                    b.HasIndex("DailyReportId");
 
                     b.ToTable("MaterialReports");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.Site", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("email")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("phone_number")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(13)
                         .HasColumnType("character varying(13)");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Site");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.User", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("image_url")
+                    b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasMaxLength(2048)
                         .HasColumnType("character varying(2048)");
 
-                    b.Property<string>("password")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(512)
                         .HasColumnType("character varying(512)");
 
-                    b.Property<string>("phone_number")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(13)
                         .HasColumnType("character varying(13)");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("user_name")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.Weather", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("daily_report_id")
+                    b.Property<Guid>("DailyReportId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("weather")
-                        .IsRequired()
+                    b.Property<int>("WeatherCondition")
                         .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("integer");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("daily_report_id");
+                    b.HasIndex("DailyReportId");
 
                     b.ToTable("Weathers");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.WorkHour", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("daily_report_id")
+                    b.Property<Guid>("DailyReportId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("work_hour")
+                    b.Property<int>("WorkHr")
                         .HasMaxLength(50)
                         .HasColumnType("integer");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("daily_report_id");
+                    b.HasIndex("DailyReportId");
 
                     b.ToTable("WorkHrs");
                 });
 
             modelBuilder.Entity("RecipesApi.Model.WorkProgress", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("daily_report_id")
+                    b.Property<Guid>("DailyReportId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("location")
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("quantity")
+                    b.Property<string>("Quantity")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("remark")
+                    b.Property<string>("Remark")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("type_of_material")
+                    b.Property<string>("TypeOfWork")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("unit")
+                    b.Property<string>("Unit")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("daily_report_id");
+                    b.HasIndex("DailyReportId");
 
                     b.ToTable("WorkProgresses");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.DailyReport", b =>
                 {
-                    b.HasOne("BuildConnectBackend.Model.Site", "site")
+                    b.HasOne("BuildConnectBackend.Model.Site", "Site")
                         .WithMany()
-                        .HasForeignKey("site_id")
+                        .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("site");
+                    b.HasOne("BuildConnectBackend.Model.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Site");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.MaterialReport", b =>
                 {
-                    b.HasOne("BuildConnectBackend.Model.DailyReport", "daily_report")
+                    b.HasOne("BuildConnectBackend.Model.DailyReport", "DailyReport")
                         .WithMany()
-                        .HasForeignKey("daily_report_id")
+                        .HasForeignKey("DailyReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("daily_report");
+                    b.Navigation("DailyReport");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.Weather", b =>
                 {
-                    b.HasOne("BuildConnectBackend.Model.DailyReport", "daily_report")
+                    b.HasOne("BuildConnectBackend.Model.DailyReport", "DailyReport")
                         .WithMany()
-                        .HasForeignKey("daily_report_id")
+                        .HasForeignKey("DailyReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("daily_report");
+                    b.Navigation("DailyReport");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.WorkHour", b =>
                 {
-                    b.HasOne("BuildConnectBackend.Model.DailyReport", "daily_report")
+                    b.HasOne("BuildConnectBackend.Model.DailyReport", "DailyReport")
                         .WithMany()
-                        .HasForeignKey("daily_report_id")
+                        .HasForeignKey("DailyReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("daily_report");
+                    b.Navigation("DailyReport");
                 });
 
             modelBuilder.Entity("RecipesApi.Model.WorkProgress", b =>
                 {
-                    b.HasOne("BuildConnectBackend.Model.DailyReport", "daily_report")
+                    b.HasOne("BuildConnectBackend.Model.DailyReport", "DailyReport")
                         .WithMany()
-                        .HasForeignKey("daily_report_id")
+                        .HasForeignKey("DailyReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("daily_report");
+                    b.Navigation("DailyReport");
                 });
 #pragma warning restore 612, 618
         }
