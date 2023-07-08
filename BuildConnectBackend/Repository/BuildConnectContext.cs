@@ -1,7 +1,6 @@
 ﻿using BuildConnectBackend.Model;
 using Microsoft.EntityFrameworkCore;
 using RecipesApi.Model;
-using System.Collections.Generic;
 
 namespace BuildConnectBackend.Context
 {
@@ -17,5 +16,6 @@ namespace BuildConnectBackend.Context
         public DbSet<MaterialReport> MaterialReports { get; set; }
         public DbSet<WorkProgress> WorkProgresses { get; set; }
         public DbSet<WorkHour> WorkHrs { get; set; }
+        public DbSet<Site> Sites { get; set; }
     }
 }

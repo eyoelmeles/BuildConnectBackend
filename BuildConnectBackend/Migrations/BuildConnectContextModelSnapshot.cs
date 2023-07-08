@@ -124,7 +124,7 @@ namespace BuildConnectBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Site");
+                    b.ToTable("Sites");
                 });
 
             modelBuilder.Entity("BuildConnectBackend.Model.User", b =>
