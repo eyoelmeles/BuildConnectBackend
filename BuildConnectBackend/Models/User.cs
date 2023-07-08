@@ -6,15 +6,15 @@ namespace BuildConnectBackend.Model
     public class User : BaseModel
     {
         [Required, MinLength(2), MaxLength(50)]
-        public string user_name { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         [Required, MinLength(8), MaxLength(13)]
-        public string phone_number { get; set; }
+        public string PhoneNumber { get; set; } = string.Empty;
 
         [Required, MinLength(2), MaxLength(512)]
-        public string password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         [MaxLength(2048)]
-        public string image_url { get; set; }
+        public string ImageURL { get; set; } = string.Empty;
     }
 }

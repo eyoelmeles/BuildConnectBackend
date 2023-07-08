@@ -7,18 +7,18 @@ namespace BuildConnectBackend.Model
     public class DailyReport : BaseModel
     {
         [Required]
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
 
         [Required]
-        public Guid site_id { get; set; }
+        public Guid SiteId { get; set; }
 
-        [ForeignKey("site_id")]
-        public Site site { get; set; }
+        [ForeignKey("SiteId")]
+        public Site Site { get; set; }
         
         [Required]
-        public Guid user_id { get; set; }
+        public Guid UserId{ get; set; }
 
-        [ForeignKey("user_id")]
-        public User user { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }

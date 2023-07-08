@@ -6,10 +6,10 @@ namespace BuildConnectBackend.Model
     public class Site : BaseModel
     {
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string email { get; set; }
+        public string Email { get; set; }
         [Required, MaxLength(13)]
-        public string phone_number { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

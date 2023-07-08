@@ -7,9 +7,9 @@ namespace BuildConnectBackend.Model
     public class Weather : BaseModel
     {
         [Required, MinLength(2), MaxLength(50)]
-        public string weather { get; set; }
-        public Guid daily_report_id { get; set; }
-        [ForeignKey("daily_report_id")]
-        public DailyReport daily_report { get; set; }
+        public WeatherType WeatherCondition { get; set; } = WeatherType.Sunny;
+        public Guid DailyReportId { get; set; }
+        [ForeignKey("DailyReportId")]
+        public DailyReport DailyReport{ get; set; }
     }
 }

@@ -4,8 +4,8 @@
     public class UserDTO
     {
         public Guid Id { get; set; }
-        public string UserName { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public string UserName { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
     }
 }

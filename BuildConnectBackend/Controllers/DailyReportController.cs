@@ -13,22 +13,18 @@ namespace BuildConnectBackend.Controllers
     public class DailyReportController : ControllerBase
     {
         private readonly BuildConnectContext _context;
-        public DailyReportController(BuildConnectContext context)
+        private readonly ILogger<DailyReportController> _logger;
+        public DailyReportController(BuildConnectContext context, ILogger<DailyReportController> logger)
         {
             _context = context;
+            _logger = logger;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DailyReportDTO>>> Get()
         {
 
-        List<DailyReport> daily_reports = await _context.DailyReports.ToListAsync();
-            return Ok(new DailyReportDTO()
-            {
-                id = daily_reports.id,
-                date= daily_reports.date,
-                site_id = daily_reports.
-                user_id = daily_reports.
-            });
+            List<DailyReport> daily_reports = await _context.DailyReports.ToListAsync();
+            return Ok(daily_reports);
         }
     }
 }

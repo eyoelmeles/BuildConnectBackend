@@ -5,8 +5,8 @@ namespace BuildConnectBackend.Model
     public abstract class BaseModel
     {
         [Key]
-        public Guid id { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime update_at { get; set; }
+        public Guid Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }
