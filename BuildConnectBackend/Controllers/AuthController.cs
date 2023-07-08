@@ -26,8 +26,8 @@ public class AuthController : ControllerBase
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this_is_really_reall_long_big_black_furry_keyboard_cat"));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        var issuer = "https://localhost:7172";
-        var audience = "https://localhost:7172";
+        var issuer = "https://localhost:7174";
+        var audience = "https://localhost:7174";
         var jwtValidity = DateTime.Now.AddMinutes(10);
 
         var token = new JwtSecurityToken(issuer, audience, new List<Claim>() {

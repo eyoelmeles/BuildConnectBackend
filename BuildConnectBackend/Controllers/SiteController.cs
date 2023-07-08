@@ -19,9 +19,10 @@ namespace BuildConnectBackend.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Site>>> GetSites()
         {
+            Console.WriteLine(HttpContext.User.Claims);
             List<Site> sites = await _context.Sites.ToListAsync();
             return Ok(sites);
         }

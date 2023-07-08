@@ -1,4 +1,5 @@
 using BuildConnectBackend.Context;
+using BuildConnectBackend.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -21,8 +22,8 @@ builder.Services.AddAuthentication(opt => {
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            ValidAudience = "https://localhost:7172",
-            ValidIssuer = "https://localhost:7172",
+            ValidAudience = "https://localhost:7174",
+            ValidIssuer = "https://localhost:7174",
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this_is_really_reall_long_big_black_furry_keyboard_cat"))
         };
     });
@@ -77,7 +78,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
+//app.UseMiddleware<JwtMiddleware>();
+
 app.UseAuthorization();
+
 
 app.MapControllers();
 
